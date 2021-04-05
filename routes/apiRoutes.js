@@ -231,7 +231,11 @@ router.put('/Teams', async (req, res) => {
 /// ///////Custom SQL Endpoint////////
 /// /////////////////////////////////
 const macrosCustom = 'SELECT `bubble_player_Tracker`.`Meals`.`meal_id` AS `meal_id`,`bubble_player_Tracker`.`Meals`.`meal_name` AS `meal_name`,`bubble_player_Tracker`.`Macros`.`calories` AS `calories`,`bubble_player_Tracker`.`Macros`.`carbs` AS `carbs`,`bubble_player_Tracker`.`Macros`.`sodium` AS `sodium`,`bubble_player_Tracker`.`Macros`.`protein` AS `protein`,`bubble_player_Tracker`.`Macros`.`fat` AS `fat`,`bubble_player_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`bubble_player_Tracker`.`Meals`JOIN `bubble_player_Tracker`.`Macros`)WHERE(`bubble_player_Tracker`.`Meals`.`meal_id` = `bubble_player_Tracker`.`Macros`.`meal_id`)';
+//players select statements below
 'SELECT `team_18_nba_bubble`.`players_table`.`player_id` AS `player_id`,`team_18_nba_bubble`.`players_table.`player_name` AS `meal_name`,`bubble_player_Tracker`.`Macros`.`calories` AS `calories`,`bubble_player_Tracker`.`Macros`.`carbs` AS `carbs`,`bubble_player_Tracker`.`Macros`.`sodium` AS `sodium`,`bubble_player_Tracker`.`Macros`.`protein` AS `protein`,`bubble_player_Tracker`.`Macros`.`fat` AS `fat`,`bubble_player_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`bubble_player_Tracker`.`Meals`JOIN `bubble_player_Tracker`.`Macros`)WHERE(`bubble_player_Tracker`.`Meals`.`meal_id` = `bubble_player_Tracker`.`Macros`.`meal_id`)';
+//teams select statements below
+
+
 router.get('/table/data', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(macrosCustom, {
