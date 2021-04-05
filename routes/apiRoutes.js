@@ -7,16 +7,16 @@ import db from '../database/initializeDB.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  res.send('Welcome to the UMD bubble API!');
 });
 
 /// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
+/// ////bubble player Endpoints////////
 /// /////////////////////////////////
-router.get('/dining', async (req, res) => {
+router.get('/player_stats', async (req, res) => {
   try {
-    const halls = await db.DiningHall.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
+    const players = await db.players_table.findAll();
+    const reply = players.length > 0 ? { data: players } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -24,44 +24,45 @@ router.get('/dining', async (req, res) => {
   }
 });
 
-router.get('/dining/:hall_id', async (req, res) => {
+router.get('/player_stats/:player_id', async (req, res) => {
   try {
-    const hall = await db.DiningHall.findAll({
+    const player = await db.players_table.findAll({
       where: {
-        hall_id: req.params.hall_id
+        player_id: req.params.player_id
       }
     });
 
-    res.json(hall);
+    res.json(player);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.post('/dining', async (req, res) => {
-  const halls = await db.DiningHall.findAll();
-  const currentId = (await halls.length) + 1;
+router.post('/player_stats', async (req, res) => {
+  const players = await db.players_table.findAll();
+  const currentId = (await players.length) + 1;
   try {
-    const newDining = await db.DiningHall.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long
+    const newplayer = await db.players_table.create({
+      player_id: currentId,
+      player_name: req.body.player_name,
+      position_id: req.body.position_id,
+      ppg: req.body.ppg,
+      assists: req.body.assists,
+      team_id: req.body.team_id
     });
-    res.json(newDining);
+    res.json(newplayer);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.delete('/dining/:hall_id', async (req, res) => {
+router.delete('/player_stats/:player_id', async (req, res) => {
   try {
-    await db.DiningHall.destroy({
+    await db.players_table.destroy({
       where: {
-        hall_id: req.params.hall_id
+        player_id: req.params.player_id
       }
     });
     res.send('Successfully Deleted');
@@ -71,16 +72,19 @@ router.delete('/dining/:hall_id', async (req, res) => {
   }
 });
 
-router.put('/dining', async (req, res) => {
+router.put('/player_stats', async (req, res) => {
   try {
-    await db.DiningHall.update(
+    await db.players_table.update(
       {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location
+        player_name: req.body.player_name,
+        position_id: req.body.position_id,
+        ppg: req.body.ppg,
+        assists: req.body.assists,
+        team_id: req.body.team_id
       },
       {
         where: {
-          hall_id: req.body.hall_id
+          player_id: req.body.player_id
         }
       }
     );
@@ -92,138 +96,142 @@ router.put('/dining', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////////Meals Endpoints//////////
+/// ////////Teams Endpoints//////////
 /// /////////////////////////////////
-router.get('/meals', async (req, res) => {
+router.get('/Teams', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll();
-    res.json(meals);
+    const teams = await db.playoff_teams.findAll();
+    res.json(teams);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/meals/:meal_id', async (req, res) => {
+router.get('/teams/:team_id', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll({
+    const teams = await db.playoff_teams.findAll({
       where: {
-        meal_id: req.params.meal_id
+        team_id: req.params.team_id
       }
     });
-    res.json(meals);
+    res.json(teams);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.put('/meals', async (req, res) => {
+router.put('/Teams', async (req, res) => {
   try {
-    await db.Meals.update(
+    await db.playoff_teams.update(
       {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category
+        team_id: req.body.team_id,
+        seed_id: req.body.seed_id,
+        conference: req.body.conference,
+        wins:req.body.wins,
+        losses:req.body.losses
       },
       {
         where: {
-          meal_id: req.body.meal_id
+          team_id: req.body.team_id
         }
       }
     );
-    res.send('Meal Successfully Updated');
+    res.send('Team Successfully Updated');
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-/// /////////////////////////////////
-/// ////////Macros Endpoints/////////
-/// /////////////////////////////////
-router.get('/macros', async (req, res) => {
-  try {
-    const macros = await db.Macros.findAll();
-    res.send(macros);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+// /// /////////////////////////////////
+// /// ////////Macros Endpoints/////////
+// /// /////////////////////////////////
+// router.get('/macros', async (req, res) => {
+//   try {
+//     const macros = await db.Macros.findAll();
+//     res.send(macros);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
 
-router.get('/macros/:meal_id', async (req, res) => {
-  try {
-    const meals = await db.Macros.findAll({
-      where: {
-        meal_id: req.params.meal_id
-      }
-    });
-    res.json(meals);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+// router.get('/macros/:meal_id', async (req, res) => {
+//   try {
+//     const meals = await db.Macros.findAll({
+//       where: {
+//         meal_id: req.params.meal_id
+//       }
+//     });
+//     res.json(meals);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
 
-router.put('/macros', async (req, res) => {
-  try {
-    // N.B. - this is a good example of where to use code validation to confirm objects
-    await db.Macros.update(
-      {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category,
-        calories: req.body.calories,
-        serving_size: req.body.serving_size,
-        cholesterol: req.body.cholesterol,
-        sodium: req.body.sodium,
-        carbs: req.body.carbs,
-        protein: req.body.protein,
-        fat: req.body.fat
-      },
-      {
-        where: {
-          meal_id: req.body.meal_id
-        }
-      }
-    );
-    res.send('Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+// router.put('/macros', async (req, res) => {
+//   try {
+//     // N.B. - this is a good example of where to use code validation to confirm objects
+//     await db.Macros.update(
+//       {
+//         meal_name: req.body.meal_name,
+//         meal_category: req.body.meal_category,
+//         calories: req.body.calories,
+//         serving_size: req.body.serving_size,
+//         cholesterol: req.body.cholesterol,
+//         sodium: req.body.sodium,
+//         carbs: req.body.carbs,
+//         protein: req.body.protein,
+//         fat: req.body.fat
+//       },
+//       {
+//         where: {
+//           meal_id: req.body.meal_id
+//         }
+//       }
+//     );
+//     res.send('Successfully Updated');
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
 
-/// /////////////////////////////////
-/// Dietary Restrictions Endpoints///
-/// /////////////////////////////////
-router.get('/restrictions', async (req, res) => {
-  try {
-    const restrictions = await db.DietaryRestrictions.findAll();
-    res.json(restrictions);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+// /// /////////////////////////////////
+// /// Dietary Restrictions Endpoints///
+// /// /////////////////////////////////
+// router.get('/restrictions', async (req, res) => {
+//   try {
+//     const restrictions = await db.DietaryRestrictions.findAll();
+//     res.json(restrictions);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
 
-router.get('/restrictions/:restriction_id', async (req, res) => {
-  try {
-    const restrictions = await db.DietaryRestrictions.findAll({
-      where: {
-        restriction_id: req.params.restriction_id
-      }
-    });
-    res.json(restrictions);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+// router.get('/restrictions/:restriction_id', async (req, res) => {
+//   try {
+//     const restrictions = await db.DietaryRestrictions.findAll({
+//       where: {
+//         restriction_id: req.params.restriction_id
+//       }
+//     });
+//     res.json(restrictions);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
 
 /// //////////////////////////////////
 /// ///////Custom SQL Endpoint////////
 /// /////////////////////////////////
-const macrosCustom = 'SELECT `Dining_Hall_Tracker`.`Meals`.`meal_id` AS `meal_id`,`Dining_Hall_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Hall_Tracker`.`Macros`.`calories` AS `calories`,`Dining_Hall_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Hall_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Hall_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Hall_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Hall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Hall_Tracker`.`Meals`JOIN `Dining_Hall_Tracker`.`Macros`)WHERE(`Dining_Hall_Tracker`.`Meals`.`meal_id` = `Dining_Hall_Tracker`.`Macros`.`meal_id`)';
+const macrosCustom = 'SELECT `bubble_player_Tracker`.`Meals`.`meal_id` AS `meal_id`,`bubble_player_Tracker`.`Meals`.`meal_name` AS `meal_name`,`bubble_player_Tracker`.`Macros`.`calories` AS `calories`,`bubble_player_Tracker`.`Macros`.`carbs` AS `carbs`,`bubble_player_Tracker`.`Macros`.`sodium` AS `sodium`,`bubble_player_Tracker`.`Macros`.`protein` AS `protein`,`bubble_player_Tracker`.`Macros`.`fat` AS `fat`,`bubble_player_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`bubble_player_Tracker`.`Meals`JOIN `bubble_player_Tracker`.`Macros`)WHERE(`bubble_player_Tracker`.`Meals`.`meal_id` = `bubble_player_Tracker`.`Macros`.`meal_id`)';
+'SELECT `team_18_nba_bubble`.`players_table`.`player_id` AS `player_id`,`team_18_nba_bubble`.`players_table.`player_name` AS `meal_name`,`bubble_player_Tracker`.`Macros`.`calories` AS `calories`,`bubble_player_Tracker`.`Macros`.`carbs` AS `carbs`,`bubble_player_Tracker`.`Macros`.`sodium` AS `sodium`,`bubble_player_Tracker`.`Macros`.`protein` AS `protein`,`bubble_player_Tracker`.`Macros`.`fat` AS `fat`,`bubble_player_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`bubble_player_Tracker`.`Meals`JOIN `bubble_player_Tracker`.`Macros`)WHERE(`bubble_player_Tracker`.`Meals`.`meal_id` = `bubble_player_Tracker`.`Macros`.`meal_id`)';
 router.get('/table/data', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(macrosCustom, {
@@ -236,17 +244,17 @@ router.get('/table/data', async (req, res) => {
   }
 });
 
-const mealMapCustom = `SELECT hall_name,
-  hall_address,
-  hall_lat,
-  hall_long,
+const mealMapCustom = `SELECT player_name,
+  position_id,
+  ppg,
+  assists,
   meal_name
 FROM
   Meals m
 INNER JOIN Meals_Locations ml 
   ON m.meal_id = ml.meal_id
-INNER JOIN Dining_Hall d
-ON d.hall_id = ml.hall_id;`;
+INNER JOIN bubble_player d
+ON d.player_id = ml.player_id;`;
 router.get('/map/data', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(mealMapCustom, {
