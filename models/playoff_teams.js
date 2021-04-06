@@ -1,31 +1,28 @@
 export default (sequelize, DataTypes) => {
-  const PlayersTable = sequelize.define(
-    'players_table',
+  const PlayoffTeams = sequelize.define(
+    'playoff_teams',
     {
-      player_id: {
+      seed_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true
       },
-      player_name: {
-        type: DataTypes.STRING
-      },
-      position_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-      },
-      ppg: {
-        type: DataTypes.STRING
-      },
-      assists: {
-        type: DataTypes.STRING
-      },
       team_id: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        primaryKey: true
+      },
+      conference: {
+        type: DataTypes.STRING
+      },
+      wins: {
+        type: DataTypes.INTEGER
+      },
+      losses: {
+        type: DataTypes.INTEGER
       }
     },
     { freezeTableName: true, timestamps: false }
   );
-  return PlayersTable;
+  return PlayoffTeams;
 };
