@@ -1,7 +1,7 @@
 async function windowActions() {
-  const request = await fetch('/api/player_stats');
-  player_stats= await request.json();
-  console.log(player_stats)
+  const request = await fetch('/api/stats');
+  stats= await request.json();
+  console.log(stats)
 }
 window.onload = windowActions;
 console.log('window loaded');

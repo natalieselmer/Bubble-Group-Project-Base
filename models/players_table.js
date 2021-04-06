@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
-  const players_table = sequelize.define(
-    'Players Table',
+  const PlayersTable = sequelize.define(
+    'players_table',
     {
       player_id: {
         type: DataTypes.INTEGER,
@@ -8,25 +8,24 @@ export default (sequelize, DataTypes) => {
         primaryKey: true
       },
       player_name: {
-        type: DataTypes.STRING,
-      }
+        type: DataTypes.STRING
+      },
       position_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
-      }
+        allowNull: false
+      },
       ppg: {
-        type: DataTypes.INTEGER,
-      }
+        type: DataTypes.STRING
+      },
       assists: {
-        type: DataTypes.STRING,
-      }
+        type: DataTypes.STRING
+      },
       team_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
-      }       
+        allowNull: false
+      }
     },
-    
     { freezeTableName: true, timestamps: false }
   );
-  return players_table;
+  return PlayersTable;
 };
