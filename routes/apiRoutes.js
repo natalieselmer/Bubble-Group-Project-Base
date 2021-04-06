@@ -234,8 +234,7 @@ const macrosCustom = 'SELECT `bubble_player_Tracker`.`Meals`.`meal_id` AS `meal_
 //players select statements below
 'SELECT `team_18_nba_bubble`.`players_table`.`player_id` AS `player_id`,`team_18_nba_bubble`.`players_table.`player_name` AS `player_name`,team_18_nba_bubble`.`players_table.`position_id` AS `position_id`,team_18_nba_bubble`.`players_table.`ppg` AS `ppg`,team_18_nba_bubble`.`players_table.`assists` AS `assists`,team_18_nba_bubble`.`players_table.`team_id` AS `team_id`,`bubble_player_Tracker`.`Macros`.`fat` AS `fat`,`bubble_player_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`bubble_player_Tracker`.`Meals`JOIN `bubble_player_Tracker`.`Macros`)WHERE(`bubble_player_Tracker`.`Meals`.`meal_id` = `bubble_player_Tracker`.`Macros`.`meal_id`)';
 //teams select statements below
-
-
+'SELECT `team_18_nba_bubble`.`playoff_teams`.`seed_id` AS `seed_id,`team_18_nba_bubble`.`playoff_teams`.`team_id` AS `team_id`, `team_18_nba_bubble`.`playoff_teams`.`conference` AS `conference`, `team_18_nba_bubble`.`playoff_teams`.`wins` AS `wins`,`team_18_nba_bubble`.`playoff_teams`.`losses` AS `losses`'
 router.get('/table/data', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(macrosCustom, {
