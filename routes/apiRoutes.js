@@ -227,58 +227,58 @@ router.put('/Teams', async (req, res) => {
 //   }
 // });
 
-/// //////////////////////////////////
-/// ///////Custom SQL Endpoint////////
-/// /////////////////////////////////
-const macrosCustom = 'SELECT `bubble_player_Tracker`.`Meals`.`meal_id` AS `meal_id`,`bubble_player_Tracker`.`Meals`.`meal_name` AS `meal_name`,`bubble_player_Tracker`.`Macros`.`calories` AS `calories`,`bubble_player_Tracker`.`Macros`.`carbs` AS `carbs`,`bubble_player_Tracker`.`Macros`.`sodium` AS `sodium`,`bubble_player_Tracker`.`Macros`.`protein` AS `protein`,`bubble_player_Tracker`.`Macros`.`fat` AS `fat`,`bubble_player_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`bubble_player_Tracker`.`Meals`JOIN `bubble_player_Tracker`.`Macros`)WHERE(`bubble_player_Tracker`.`Meals`.`meal_id` = `bubble_player_Tracker`.`Macros`.`meal_id`)';
-//players select statements below
-'SELECT `team_18_nba_bubble`.`players_table`.`player_id` AS `player_id`,`team_18_nba_bubble`.`players_table.`player_name` AS `player_name`,team_18_nba_bubble`.`players_table.`position_id` AS `position_id`,team_18_nba_bubble`.`players_table.`ppg` AS `ppg`,team_18_nba_bubble`.`players_table.`assists` AS `assists`,team_18_nba_bubble`.`players_table.`team_id` AS `team_id`,`bubble_player_Tracker`.`Macros`.`fat` AS `fat`,`bubble_player_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`bubble_player_Tracker`.`Meals`JOIN `bubble_player_Tracker`.`Macros`)WHERE(`bubble_player_Tracker`.`Meals`.`meal_id` = `bubble_player_Tracker`.`Macros`.`meal_id`)';
-//teams select statements below
-'SELECT `team_18_nba_bubble`.`playoff_teams`.`seed_id` AS `seed_id,`team_18_nba_bubble`.`playoff_teams`.`team_id` AS `team_id`, `team_18_nba_bubble`.`playoff_teams`.`conference` AS `conference`, `team_18_nba_bubble`.`playoff_teams`.`wins` AS `wins`,`team_18_nba_bubble`.`playoff_teams`.`losses` AS `losses`'
-router.get('/table/data', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(macrosCustom, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+// /// //////////////////////////////////
+// /// ///////Custom SQL Endpoint////////
+// /// /////////////////////////////////
+// //const macrosCustom = 'SELECT `bubble_player_Tracker`.`Meals`.`meal_id` AS `meal_id`,`bubble_player_Tracker`.`Meals`.`meal_name` AS `meal_name`,`bubble_player_Tracker`.`Macros`.`calories` AS `calories`,`bubble_player_Tracker`.`Macros`.`carbs` AS `carbs`,`bubble_player_Tracker`.`Macros`.`sodium` AS `sodium`,`bubble_player_Tracker`.`Macros`.`protein` AS `protein`,`bubble_player_Tracker`.`Macros`.`fat` AS `fat`,`bubble_player_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`bubble_player_Tracker`.`Meals`JOIN `bubble_player_Tracker`.`Macros`)WHERE(`bubble_player_Tracker`.`Meals`.`meal_id` = `bubble_player_Tracker`.`Macros`.`meal_id`)';
+// //players select statements below
+// const playerCustom = 'SELECT `team_18_nba_bubble`.`players_table`.`player_id` AS `player_id`,`team_18_nba_bubble`.`players_table.`player_name` AS `player_name`,team_18_nba_bubble`.`players_table.`position_id` AS `position_id`,team_18_nba_bubble`.`players_table.`ppg` AS `ppg`,team_18_nba_bubble`.`players_table.`assists` AS `assists`,team_18_nba_bubble`.`players_table.`team_id` AS `team_id`FROM(`bubble_player_Tracker`.`Meals`JOIN `bubble_player_Tracker`.`Macros`)WHERE(`bubble_player_Tracker`.`Meals`.`meal_id` = `bubble_player_Tracker`.`Macros`.`meal_id`)';
+// //teams select statements below
+// const teamCustom = 'SELECT `team_18_nba_bubble`.`playoff_teams`.`seed_id` AS `seed_id,`team_18_nba_bubble`.`playoff_teams`.`team_id` AS `team_id`, `team_18_nba_bubble`.`playoff_teams`.`conference` AS `conference`, `team_18_nba_bubble`.`playoff_teams`.`wins` AS `wins`,`team_18_nba_bubble`.`playoff_teams`.`losses` AS `losses`'
+// router.get('/table/data', async (req, res) => {
+//   try {
+//     const result = await db.sequelizeDB.query(macrosCustom, {
+//       type: sequelize.QueryTypes.SELECT
+//     });
+//     res.json(result);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
 
-const mealMapCustom = `SELECT player_name,
-  position_id,
-  ppg,
-  assists,
-  meal_name
-FROM
-  Meals m
-INNER JOIN Meals_Locations ml 
-  ON m.meal_id = ml.meal_id
-INNER JOIN bubble_player d
-ON d.player_id = ml.player_id;`;
-router.get('/map/data', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(mealMapCustom, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-router.get('/custom', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(req.body.query, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+// const mealMapCustom = `SELECT player_name,
+//   position_id,
+//   ppg,
+//   assists,
+//   meal_name
+// FROM
+//   Meals m
+// INNER JOIN Meals_Locations ml 
+//   ON m.meal_id = ml.meal_id
+// INNER JOIN bubble_player d
+// ON d.player_id = ml.player_id;`;
+// router.get('/map/data', async (req, res) => {
+//   try {
+//     const result = await db.sequelizeDB.query(mealMapCustom, {
+//       type: sequelize.QueryTypes.SELECT
+//     });
+//     res.json(result);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
+// router.get('/custom', async (req, res) => {
+//   try {
+//     const result = await db.sequelizeDB.query(req.body.query, {
+//       type: sequelize.QueryTypes.SELECT
+//     });
+//     res.json(result);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
 
 export default router;
