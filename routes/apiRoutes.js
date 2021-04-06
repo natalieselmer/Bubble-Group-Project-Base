@@ -98,9 +98,9 @@ router.put('/stats', async (req, res) => {
 /// /////////////////////////////////
 /// ////////Teams Endpoints//////////
 /// /////////////////////////////////
-router.get('/Teams', async (req, res) => {
+router.get('/teams', async (req, res) => {
   try {
-    const teams = await db.playoff_teams.findAll();
+    const teams = await db.PlayoffTeams.findAll();
     res.json(teams);
   } catch (err) {
     console.error(err);
@@ -110,7 +110,7 @@ router.get('/Teams', async (req, res) => {
 
 router.get('/teams/:team_id', async (req, res) => {
   try {
-    const teams = await db.playoff_teams.findAll({
+    const teams = await db.PlayoffTeams.findAll({
       where: {
         team_id: req.params.team_id
       }
@@ -122,9 +122,9 @@ router.get('/teams/:team_id', async (req, res) => {
   }
 });
 
-router.put('/Teams', async (req, res) => {
+router.put('/teams', async (req, res) => {
   try {
-    await db.playoff_teams.update(
+    await db.PlayoffTeams.update(
       {
         team_id: req.body.team_id,
         seed_id: req.body.seed_id,
