@@ -3,11 +3,13 @@ import PlayoffTeams from './playoff_teams.js';
 import Sponsors from './sponsors.js';
 import PositionsTable from './positions.js';
 import Teams from './team.js';
+import Awards from './awards.js';
 
 export default {
   PlayersTable,
   PlayoffTeams,
   Sponsors,
   PositionsTable,
-  Teams
+  Teams,
+  Awards
 };

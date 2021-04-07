@@ -239,4 +239,17 @@ router.route('/teamname')
     }
   });
 
+ /// /////////////////////////////////
+/// ////////Awards Endpoints//////////
+/// /////////////////////////////////
+router.route('/awards')
+.get(async (req, res) => {
+  try {
+    const awards = await db.Awards.findAll();
+    res.json(awards);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 export default router;
