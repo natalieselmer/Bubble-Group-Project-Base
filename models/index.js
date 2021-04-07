@@ -4,6 +4,7 @@ import Sponsors from './sponsors.js';
 import PositionsTable from './positions.js';
 import Teams from './team.js';
 import Endorsements from './endorsements.js';
+import Awards from './awards.js';
 
 export default {
   PlayersTable,
@@ -11,5 +12,6 @@ export default {
   Sponsors,
   PositionsTable,
   Teams,
-  Endorsements
+  Endorsements,
+  Awards
 };
