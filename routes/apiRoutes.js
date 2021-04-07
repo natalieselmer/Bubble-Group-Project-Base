@@ -182,4 +182,61 @@ router.route('/sponsors')
   }
 });
 
+/// /////////////////////////////////
+/// ////////Teams Endpoints (we only need this table for team_names column)//////////
+/// /////////////////////////////////
+router.route('/teamname')
+  .get(async (req, res) => {
+    try {
+      const teamname = await db.Teams.findAll();
+      res.json(teamname);
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+  })
+  .put(async (req, res) => {
+    try {
+      await db.Teams.update(
+        {
+          team_id: req.body.team_id,
+          city: req.body.city,
+          state: req.body.state,
+          gm:req.body.gm,
+          arena:req.body.arena,
+          year_founded:req.body.year_founded,
+          name:req.body.name
+        },
+        {
+          where: {
+            team_id: req.body.team_id
+          }
+        }
+      );
+      res.send('Team Successfully Updated');
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+  })
+  .post(async (req, res) => {
+    const teamname = await db.Teams.findAll();
+    const currentId = (await players.length) + 1;
+    try {
+      const newteamname = await db.Teams.create({
+          team_id: req.body.team_id,
+          city: req.body.city,
+          state: req.body.state,
+          gm:req.body.gm,
+          arena:req.body.arena,
+          year_founded:req.body.year_founded,
+          name:req.body.name
+      });
+      res.json(newteamname);
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+  });
+
 export default router;
