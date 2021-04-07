@@ -182,6 +182,20 @@ router.route('/sponsors')
   }
 });
 
+  /// /////////////////////////////////
+/// ////////Endorsement Endpoints//////////
+/// /////////////////////////////////
+router.route('/endorsements')
+.get(async (req, res) => {
+  try {
+    const endorsements = await db.Endorsements.findAll();
+    res.json(endorsements);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 /// /////////////////////////////////
 /// ////////Teams Endpoints (we only need this table for team_names column)//////////
 /// /////////////////////////////////
