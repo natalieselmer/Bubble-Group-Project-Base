@@ -167,4 +167,19 @@ router.route('/teams')
       res.error('Server error');
     }
   });
+
+  /// /////////////////////////////////
+/// ////////Sponsor Endpoints//////////
+/// /////////////////////////////////
+router.route('/sponsors')
+.get(async (req, res) => {
+  try {
+    const sponsors = await db.Sponsors.findAll();
+    res.json(sponsors);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 export default router;
