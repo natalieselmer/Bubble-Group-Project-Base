@@ -1,11 +1,7 @@
-import DietaryRestrictions from './DietaryRestrictions.js';
-import DiningHall from './DiningHall.js';
-import Macros from './Macros.js';
-import Meals from './Meals.js';
+import PlayersTable from './players_table.js';
+import PlayoffTeams from './playoff_teams.js';
 
 export default {
-  DietaryRestrictions,
-  DiningHall,
-  Macros,
-  Meals
+  PlayersTable,
+  PlayoffTeams
 };
