@@ -116,7 +116,7 @@ router.route('/player/:player_id')
   });
 
 /// /////////////////////////////////
-/// ////////Teams Endpoints//////////
+/// ////////Playoff Teams Endpoints//////////
 /// /////////////////////////////////
 router.route('/teams')
   .get(async (req, res) => {
