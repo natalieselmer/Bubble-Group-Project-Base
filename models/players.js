@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
   const PlayersTable = sequelize.define(
-    'players_table',
+    'players',
     {
       player_id: {
         type: DataTypes.INTEGER,
