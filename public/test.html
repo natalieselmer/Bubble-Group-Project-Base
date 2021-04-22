@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel="stylesheet" href="styles.css">
+    
+    <title>Edward Aloba</title>
+</head>
+<div>
+    <p> *** OTHER STUFF HERE ***<p/>
+        <table id="gable" class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+            <colgroup>
+                <col class="twenty" />
+                <col class="fourty" />
+                <col class="thirtyfive" />
+                <col class="twentyfive" />
+            </colgroup>
+            <tr>
+                <th onclick="sortTable(0)"><span class="glyphicon glyphicon-sort"></span>Player ID</th>
+                <th onclick="sortTable(1)"><span class="glyphicon glyphicon-sort"></span>Player Name</th>
+                <th onclick="sortTable(2)"><span class="glyphicon glyphicon-sort"></span>Position ID</th>
+                <th onclick="sortTable(3)"><span class="glyphicon glyphicon-sort"></span>PPG</th>
+                <th onclick="sortTable(3)"><span class="glyphicon glyphicon-sort"></span>Assists</th>
+                <th onclick="sortTable(3)"><span class="glyphicon glyphicon-sort"></span>Team ID</th>
+            </tr>
+        </table>
+    </div>
+    <script>
+        (async () => {
+        const dat = await fetch('/api/player');
+        const data = await dat.json();
+        console.table(data.data);
+        console.log(data);
+    var table = document.getElementById('gable');
+
+    data.data.forEach((object) => {
+        var tr = document.createElement('tr');
+        tr.innerHTML = '<td>' + object.player_id + '</td>' +
+            '<td>' + object.player_name + '</td>' +
+            '<td>' + object.position_id + '</td>' +
+            '<td>' + object.ppg + '</td>' +
+            '<td>' + object.assists + '</td>'+
+            '<td>' + object.team_id + '</td>';;
+        table.appendChild(tr);
+    });
+
+    })()
+    
+   
+    </script>

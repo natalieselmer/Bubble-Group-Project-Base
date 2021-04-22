@@ -38,12 +38,11 @@
                 <col class="twentyfive" />
             </colgroup>
             <tr>
-                <th ><span class="glyphicon glyphicon-sort"></span>Player ID</th>
-                <th ><span class="glyphicon glyphicon-sort"></span>Player Name</th>
-                <th ><span class="glyphicon glyphicon-sort"></span>Position ID</th>
-                <th ><span class="glyphicon glyphicon-sort"></span>PPG</th>
-                <th ><span class="glyphicon glyphicon-sort"></span>Assists</th>
+                <th ><span class="glyphicon glyphicon-sort"></span>Seed ID</th>
                 <th ><span class="glyphicon glyphicon-sort"></span>Team ID</th>
+                <th ><span class="glyphicon glyphicon-sort"></span>Conference</th>
+                <th ><span class="glyphicon glyphicon-sort"></span>Wins</th>
+                <th ><span class="glyphicon glyphicon-sort"></span>Losses</th>
             </tr>
         </table>
        
@@ -52,20 +51,19 @@
     </div>
     <script>
         (async () => {
-        const dat = await fetch('/api/player');
+        const dat = await fetch('/api/teams');
         const data = await dat.json();
-        console.table(data.data);
+        console.table(data);
         console.log(data);
     var table = document.getElementById('gable');
 
-    data.data.forEach((object) => {
+    data.forEach((object) => {
         var tr = document.createElement('tr');
-        tr.innerHTML = '<td>' + object.player_id + '</td>' +
-            '<td>' + object.player_name + '</td>' +
-            '<td>' + object.position_id + '</td>' +
-            '<td>' + object.ppg + '</td>' +
-            '<td>' + object.assists + '</td>'+
-            '<td>' + object.team_id + '</td>';;
+        tr.innerHTML = '<td>' + object.seed_id + '</td>' +
+            '<td>' + object.team_id+ '</td>' +
+            '<td>' + object.conference + '</td>' +
+            '<td>' + object.wins + '</td>' +
+            '<td>' + object.losses+ '</td>';
         table.appendChild(tr);
     });
 
