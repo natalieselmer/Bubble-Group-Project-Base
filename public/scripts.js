@@ -9,7 +9,7 @@ console.log('window loaded');
 //adding a player record
 form.addEventListener('submit', async (event) =>{
   event.preventDefault();
-  const post = await fetch('/players',{
+  const post = await fetch('/players', {
     method: 'POST',
     headers:{
       'Content-Type': 'application/json'
@@ -19,7 +19,7 @@ form.addEventListener('submit', async (event) =>{
 
 });
 
-async function Actions() {
+async function actions() {
   console.log('loaded window')
   const form = document.querySelector('#player_name');
 
