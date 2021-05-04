@@ -5,3 +5,23 @@ async function windowActions() {
 }
 window.onload = windowActions;
 console.log('window loaded');
+
+//adding a player record
+form.addEventListener('submit', async (event) =>{
+  event.preventDefault();
+  const post = await fetch('/players',{
+    method: 'POST',
+    headers:{
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({player_name:name.value})
+  });
+
+});
+
+async function Actions() {
+  console.log('loaded window')
+  const form = document.querySelector('#player_name');
+
+  form.addEventListener('submit')
+}
