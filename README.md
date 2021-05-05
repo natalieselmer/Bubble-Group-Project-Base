@@ -41,16 +41,21 @@ The are no prewritten tests in the source repository, but you can use Cypress to
 
 ## Server application APIs
 example below COREY
-/api - API route for course grades and GPA data.
+/api - API route that gives user option to search.
 
-GET - Logs to console response query from URL. returns response 'Got a GET request from /api'.
-POST - obtains course name from request body to fetch url. fetch data json from PlanetTerp grades API and returns JSON response.
-PUT - returns response 'Got a PUT request at /api'.
+GET - returns the player from the database that the user searches for
+POST - allows user to input a player entry with stats if not already in the table
+PUT - allows user to change any player attribute
+DELETE - user can click "DELETE" button to delete a player entry
+
 
 
 ## Known Bugs and Future Development
-COREY
+- Having issues with connecting the forms to the api's
 
 
 ## Future Development:
-- Implement "favorites" feature.
+- Implement "favorites" feature
+- Add multiple seasons of data to allow for further analysis
+- Incorporate and display team statistics in addition to players
+
