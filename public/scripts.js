@@ -19,7 +19,7 @@ form.addEventListener('submit', async (event) =>{
 
 });
 
-async function Actions() {
+async function actions() {
   console.log('loaded window')
   const form = document.querySelector('#player_name');
 
