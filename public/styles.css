@@ -59,3 +59,11 @@ font-size: large;
     margin: 20px;
 
 }
+#subheading {
+  color: white;
+  font-size: x-large;
+  font-weight: 800;
+  -webkit-text-stroke-color: #80abce;
+  -webkit-text-stroke-width: 2px;
+  padding-bottom: 10px;
+}
