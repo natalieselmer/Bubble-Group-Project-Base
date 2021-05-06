@@ -20,9 +20,18 @@
     </div>
 
     <body>
+        <div class="tabs is-fullwidth">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="search.html">Search</a></li>
+                <li><a href="favorites.html">Favorites</a></li>
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+        </div>
+
         <div class="container">
             <h1>Player not here? Add them: </h1>
-            <form action='/players' method='post'>
+            <form action='/api/player' method='POST'>
                 <ul class="flex-outer">
                     <li>
                         <label for="player_name">Player Name</label>
@@ -37,20 +46,16 @@
                         <input type="assists" id="assists" placeholder="Assists" name='assists'>
                     </li>
                     <li>
+                        <label for="player_id">Add a Player Id</label>
+                            <input type="text" id="player_id" placeholder="Enter a player id" name='player_id'>
+                     </li>
+                    <li>
                         <button type="submit" id='button' name='button'>Submit</button>
                     </li>
                 </ul>
             </form>
         </div>
     
-    <div class="tabs is-fullwidth"  >
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="search.html">Search</a></li>
-          <li><a href="favorites.html">Favorites</a></li>
-          <li><a href="settings.html">Settings</a></li>
-        </ul>
-      </div>
     
       <div style="background-image: url('image 4.png'); height: 1000px; margin:0 auto">
 
