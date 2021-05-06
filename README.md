@@ -41,13 +41,36 @@ The are no prewritten tests in the source repository, but you can use Cypress to
 
 ## Server application APIs
 example below COREY
-/api - API route that gives user option to search.
+/ - API route that brings user to web application home page; can choose between players and teams
 
-GET - returns the player from the database that the user searches for
-POST - allows user to input a player entry with stats if not already in the table
-PUT - allows user to change any player attribute
-DELETE - user can click "DELETE" button to delete a player entry
+/player
+  - GET: returns the players from the database
+  - POST: allows user to input a player entry if not already in the table
+  - PUT: allows user to update any player attribute
+  - DELETE: user can click "DELETE" button to delete player attributes
 
+/player/:player_id
+  - GET: returns the player that the user searches for
+  - DELETE: user can click "DELETE" button to delete a player entry
+
+/teams
+  - GET: returns all the playoff teams
+  - PUT: allows user to update a playoff team
+  - POST: allows user to input a playoff team entry if not already in the table
+
+/sponsors
+  - GET: returns all sponsors entries
+
+/endorsements
+  - GET: returns all endorsements entries
+
+/teamname
+  - GET: returns all team entries
+  - PUT: allows user to update a team
+  - POST: allows user to input a team entry if not already in the table
+
+/awards
+  - GET: returns all awards entries
 
 
 ## Known Bugs and Future Development
