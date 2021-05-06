@@ -36,7 +36,7 @@ router.route('/player')
         assists: req.body.assists,
         team_id: req.body.team_id
       });
-      res.json(newplayer);
+      res.redirect('http://localhost:3000/players_table.html');
     } catch (err) {
       console.error(err);
       res.error('Server error');

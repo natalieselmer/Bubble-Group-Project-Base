@@ -46,8 +46,16 @@
                         <label for="player_id">Add a Player Id</label>
                             <input type="text" id="player_id" placeholder="Enter a player id" name='player_id'>
                      </li>
+                     <li>
+                        <label for="position_id">Add a Position Id</label>
+                            <input type="text" id="position_id" placeholder="Enter a position id" name='position_id'>
+                     </li>
+                     <li>
+                        <label for="team_id">Add a Team Id</label>
+                            <input type="text" id="team_id" placeholder="Enter a team id" name='team_id'>
+                     </li>
                     <li>
-                        <button type="submit" id='button' name='button'>Submit</button>
+                        <button  type="submit" id='button'  name='button'>Submit</button>
                     </li>
                 </ul>
             </form>
@@ -64,12 +72,12 @@
                 <col class="twentyfive" />
             </colgroup>
             <tr>
-                <th ><span class="glyphicon glyphicon-sort"></span>Player ID</th>
+              
                 <th ><span class="glyphicon glyphicon-sort"></span>Player Name</th>
-                <th ><span class="glyphicon glyphicon-sort"></span>Position ID</th>
+                
                 <th ><span class="glyphicon glyphicon-sort"></span>PPG</th>
                 <th ><span class="glyphicon glyphicon-sort"></span>Assists</th>
-                <th ><span class="glyphicon glyphicon-sort"></span>Team ID</th>
+          
             </tr>
         </table>
        
@@ -77,6 +85,7 @@
 
     </div>
     <script>
+       
         (async () => {
         const dat = await fetch('/api/player');
         const data = await dat.json();
@@ -86,12 +95,11 @@
 
     data.data.forEach((object) => {
         var tr = document.createElement('tr');
-        tr.innerHTML = '<td>' + object.player_id + '</td>' +
+        tr.innerHTML = 
             '<td>' + object.player_name + '</td>' +
-            '<td>' + object.position_id + '</td>' +
+           
             '<td>' + object.ppg + '</td>' +
-            '<td>' + object.assists + '</td>'+
-            '<td>' + object.team_id + '</td>';;
+            '<td>' + object.assists + '</td>';;
         table.appendChild(tr);
     });
 

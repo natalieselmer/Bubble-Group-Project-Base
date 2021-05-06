@@ -28,6 +28,7 @@
         </table>
     </div>
     <script>
+        async function search() {
         (async () => {
         const dat = await fetch('/api/player');
         const data = await dat.json();
@@ -47,6 +48,7 @@
     });
 
     })()
+}
     
    
     </script>
