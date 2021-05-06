@@ -19,19 +19,19 @@ async function windowActions() {
 }
 
 function findTeams(wordToMatch, teams) {
-    return teams.filter(team => {
-      // here we need to figure out if the city or state matches what was searched
-      const regex = new RegExp(wordToMatch, 'gi');
-      return  team.name.match(regex)
-    });
+  return teams.filter((team) => {
+    // here we need to figure out if the city or state matches what was searched
+    const regex = new RegExp(wordToMatch, 'gi');
+    return team.name.match(regex);
+  });
 }
 
 function findPlayer(wordToMatch, players) {
-    return players.filter(player => {
-      // here we need to figure out if the city or state matches what was searched
-      const regex = new RegExp(wordToMatch, 'gi');
-      return  player.player_name.match(regex)
-    });
+  return players.filter((player) => {
+    // here we need to figure out if the city or state matches what was searched
+    const regex = new RegExp(wordToMatch, 'gi');
+    return player.player_name.match(regex);
+  });
 }
 
 async function search() {
@@ -39,17 +39,17 @@ async function search() {
   const players = await response.json();
   const team_response = await fetch('/api/teamname/');
   const teams = await team_response.json();
-  const search_input = document.getElementById("search").value;
+  const search_input = document.getElementById('search').value;
   console.log(search_input);
   const result_team = findTeams(search_input, teams);
   const result_player = findPlayer(search_input, players.data);
   let html = '';
-  if(result_team.length != 0){
+  if (result_team.length != 0) {
     console.log(result_team);
 
-    html = result_team.map(team => {
-        //Formats selected info
-        return `
+    html = result_team.map((team) =>
+    // Formats selected info
+      `
           <li>
             <span class ="name"><b>${team.name}</b></span><br>
             <span class ="team_id">${team.team_id}</span><br>
@@ -57,14 +57,13 @@ async function search() {
             <span class="state">${team.state}</span><br>
             <span class ="arena">${team.arena}</span><br><br>
           </li>
-          `;
-    }).join(html);
+          `).join(html);
   }
-  if(result_player.length != 0){
+  if (result_player.length != 0) {
     console.log(result_player);
-    html = result_player.map(player => {
-        //Formats selected info
-        return `
+    html = result_player.map((player) =>
+    // Formats selected info
+      `
           <li>
             <span class ="restaurant"><b>${player.player_name}</b></span><br>
             <span class ="restaurantType">${player.position_id}</span><br>
@@ -72,10 +71,9 @@ async function search() {
             <span class="name">${player.team_id}</span><br>
             <span class ="zipcode">${player.assists}</span><br><br>
           </li>
-          `;
-    }).join(html);
+          `).join(html);
   }
-  if(result_player.length == 0 && result_team.length == 0){
+  if (result_player.length == 0 && result_team.length == 0) {
     html = `
           <li>
             No result found
@@ -87,7 +85,6 @@ async function search() {
 }
 
 const results = document.querySelector('.results');
-
 
 /* async function windowActions() {
   const request = await fetch('/api/stats');
