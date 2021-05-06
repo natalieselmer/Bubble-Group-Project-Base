@@ -43,10 +43,10 @@
             </colgroup>
             <tr>
                 <th ><span class="glyphicon glyphicon-sort"></span>Team Name</th>
-                <th ><span class="glyphicon glyphicon-sort"></span>Team ID</th>
+                <!-- <th><span class="glyphicon glyphicon-sort"></span>Team ID</th> -->
                 <th ><span class="glyphicon glyphicon-sort"></span>Team City</th>
                 <th ><span class="glyphicon glyphicon-sort"></span>State</th>
-                <th ><span class="glyphicon glyphicon-sort"></span>GM</th>
+                <th ><span class="glyphicon glyphicon-sort"></span>General Manager</th>
                 <th ><span class="glyphicon glyphicon-sort"></span>Arena</th> 
                 <th ><span class="glyphicon glyphicon-sort"></span>Year Founded</th>
             </tr>
@@ -66,7 +66,7 @@
     data.forEach((object) => {
         var tr = document.createElement('tr');
         tr.innerHTML = '<td>' + object.name + '</td>' +
-        '<td>' + object.team_id+ '</td>' +
+        // '<td>' + object.team_id+ '</td>' +
             '<td>' + object.city+ '</td>' +
             '<td>' + object.state + '</td>' +
             '<td>' + object.gm + '</td>' +
