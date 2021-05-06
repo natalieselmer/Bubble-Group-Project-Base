@@ -11,11 +11,6 @@ https://intense-bastion-27734.herokuapp.com/
 - Macbook Pro 13/15
 - iPhone 6/7/8 Plus
 ---
-## Links 
-User Manual
-Developer Manual
-
----
 
 # Developer Manual
 ## How to install application and all dependencies
@@ -40,8 +35,7 @@ The are no prewritten tests in the source repository, but you can use Cypress to
 --
 
 ## Server application APIs
-example below COREY
-/ - API route that brings user to web application home page; can choose between players and teams
+/api - API route that brings user to web application home page; can choose between players and teams
 
 /player
   - GET: returns the players from the database
@@ -50,8 +44,8 @@ example below COREY
   - DELETE: user can click "DELETE" button to delete player attributes
 
 /player/:player_id
-  - GET: returns the player that the user searches for
-  - DELETE: user can click "DELETE" button to delete a player entry
+  - GET: returns the individual player that the user searches for
+  - DELETE: ability to delete individual players by "player_id" without having to go back into mysql.
 
 /teams
   - GET: returns all the playoff teams
@@ -73,12 +67,13 @@ example below COREY
   - GET: returns all awards entries
 
 
-## Known Bugs and Future Development
-- Having issues with connecting the forms to the api's
+## Known Bugs
+- There is a known issue when adding players that the player_ids do not autoincrement when adding a new player so user needs to input player_id as well as other ids
+- 
 
 
 ## Future Development:
 - Implement "favorites" feature
 - Add multiple seasons of data to allow for further analysis
 - Incorporate and display team statistics in addition to players
-
+- Eliminate need to add in id (ex: player_id) when adding a player or team
