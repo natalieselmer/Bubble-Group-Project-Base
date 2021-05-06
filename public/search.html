@@ -8,17 +8,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link rel='stylesheet' href=styles.css>
 
-   
-    
+
+
 </head>
 
 <body >
 
     <div class = "header">
         <div class="header-img"></div>
-        <img src="NBA Bubble.png" />
+        <a href="index.html">
+            <img src="NBA Bubble.png" id="logo"/>
+        </a>
+        <h2 id="subheading">Final Project</h2>
     </div>
-    
+
     <div class="tabs is-fullwidth"  >
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -26,13 +29,31 @@
           <li><a href="favorites.html">Favorites</a></li>
           <li><a href="settings.html">Settings</a></li>
         </ul>
+
       </div>
-    
-      <div style="background-image: url('image 5.png'); height: 1000px; margin:0 auto">
-       
-        
+
+
+      <div style="background-image: url('image 6.png'); height: 1100px; margin:0px auto">
+          <div>
+              <img src="Team Search.png" style="margin: 50px; height: 40px;">
+              <img src="Player Search.png" style="margin: 50px; height: 40px;">
+
+          </div>
+
+         <div>
+              <input  id="search" placeholder="Search" class = "input" style=" height: 69px; width: 369px; background-color: rgb(192, 212, 236); border-radius: 50px;">
+         </div>
+         <button onclick="search()" style="background-image: url('Group\ 3147.png'); border-radius: 50px; width: 246px; height: 72px; ">
+         </button>
+
+         <ul class="results">
+         </ul>
+
+      </div>
 
     </div>
+    <script src = "scripts.js">  </script>
+
 </body>
 
 </html>

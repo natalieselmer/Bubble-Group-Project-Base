@@ -48,3 +48,22 @@ body {
 #logo {
   margin: 15px;
 }
+.results li{
+font-size: large;
+    margin: 10px;
+    background-image: linear-gradient(black, black);
+    color: white;
+    padding: 30px 0;
+    border: 3px solid white;
+    border-radius: 50px;
+    margin: 20px;
+
+}
+#subheading {
+  color: white;
+  font-size: x-large;
+  font-weight: 800;
+  -webkit-text-stroke-color: #80abce;
+  -webkit-text-stroke-width: 2px;
+  padding-bottom: 10px;
+}

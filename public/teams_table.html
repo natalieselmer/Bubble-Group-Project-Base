@@ -16,7 +16,10 @@
 
     <div class = "header">
         <div class="header-img"></div>
-        <img src="NBA Bubble.png" />
+        <a href="index.html">
+            <img src="NBA Bubble.png" id="logo"/>
+        </a>
+        <h2 id="subheading">Final Project</h2>
     </div>
     
     <div class="tabs is-fullwidth"  >
@@ -29,6 +32,7 @@
       </div>
     
       <div style="background-image: url('image 4.png'); height: 1000px; margin:0 auto">
+        <h2 id="subheading">Team Data</h2>
 
         <table id="gable" style="background-image: url('image 4.png')" class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
             <colgroup>
@@ -38,11 +42,13 @@
                 <col class="twentyfive" />
             </colgroup>
             <tr>
-                <th ><span class="glyphicon glyphicon-sort"></span>Seed ID</th>
+                <th ><span class="glyphicon glyphicon-sort"></span>Team Name</th>
                 <th ><span class="glyphicon glyphicon-sort"></span>Team ID</th>
-                <th ><span class="glyphicon glyphicon-sort"></span>Conference</th>
-                <th ><span class="glyphicon glyphicon-sort"></span>Wins</th>
-                <th ><span class="glyphicon glyphicon-sort"></span>Losses</th>
+                <th ><span class="glyphicon glyphicon-sort"></span>Team City</th>
+                <th ><span class="glyphicon glyphicon-sort"></span>State</th>
+                <th ><span class="glyphicon glyphicon-sort"></span>GM</th>
+                <th ><span class="glyphicon glyphicon-sort"></span>Arena</th> 
+                <th ><span class="glyphicon glyphicon-sort"></span>Year Founded</th>
             </tr>
         </table>
        
@@ -51,7 +57,7 @@
     </div>
     <script>
         (async () => {
-        const dat = await fetch('/api/teams');
+        const dat = await fetch('/api/teamname');
         const data = await dat.json();
         console.table(data);
         console.log(data);
@@ -59,11 +65,13 @@
 
     data.forEach((object) => {
         var tr = document.createElement('tr');
-        tr.innerHTML = '<td>' + object.seed_id + '</td>' +
-            '<td>' + object.team_id+ '</td>' +
-            '<td>' + object.conference + '</td>' +
-            '<td>' + object.wins + '</td>' +
-            '<td>' + object.losses+ '</td>';
+        tr.innerHTML = '<td>' + object.name + '</td>' +
+        '<td>' + object.team_id+ '</td>' +
+            '<td>' + object.city+ '</td>' +
+            '<td>' + object.state + '</td>' +
+            '<td>' + object.gm + '</td>' +
+            '<td>' + object.arena+ '</td>'+
+            '<td>' + object.year_founded+ '</td>';
         table.appendChild(tr);
     });
 
