@@ -30,6 +30,45 @@
           <li><a href="settings.html">Settings</a></li>
         </ul>
       </div>
+
+      <div class="container">
+        <h1>Team not here? Add them: </h1>
+        <form action='/api/teamname' method='POST'>
+            <ul class="flex-outer">
+                <li>
+                    <label for="player_name">Team id</label>
+                    <input type="text" id="team_id" placeholder="Enter the Team's name" name='team_id'>
+                </li>
+                <li>
+                    <label for="ppg">Team city</label>
+                    <input type="text" id="city" placeholder="Enter Team's City" name='city'>
+                </li>
+                <li>
+                    <label for="assists">State</label>
+                    <input type="assists" id="state" placeholder="Enter Team's State" name='state'>
+                </li>
+                <li>
+                    <label for="player_id">General Manager</label>
+                        <input type="text" id="gm" placeholder="Enter Team's general manager" name='gm'>
+                 </li>
+                 <li>
+                    <label for="position_id">Arena</label>
+                        <input type="text" id="arena" placeholder="Enter Team's arena" name='arena'>
+                 </li>
+                 <li>
+                    <label for="team_id">Year founded</label>
+                        <input type="text" id="year_founded" placeholder="Enter teams founded date" name='year_founded'>
+                 </li>
+                 <li>
+                    <label for="team_id">Name</label>
+                        <input type="text" id="name" placeholder="Enter a team Name" name='name'>
+                 </li>
+                <li>
+                    <button  type="submit" id='button'  name='button'>Submit</button>
+                </li>
+            </ul>
+        </form>
+    </div>
     
       <div style="background-image: url('image 4.png'); height: 1000px; margin:0 auto">
         <h2 id="subheading">Team Data</h2>

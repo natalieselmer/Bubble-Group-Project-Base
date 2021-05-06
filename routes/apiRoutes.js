@@ -235,10 +235,10 @@ router.route('/teamname')
   })
   .post(async (req, res) => {
     const teamname = await db.Teams.findAll();
-    const currentId = (await players.length) + 1;
+    const currentId = (await teamname.length) + 1;
     try {
       const newteamname = await db.Teams.create({
-          team_id: req.body.team_id,
+          team_id: currentId,
           city: req.body.city,
           state: req.body.state,
           gm:req.body.gm,
@@ -246,7 +246,7 @@ router.route('/teamname')
           year_founded:req.body.year_founded,
           name:req.body.name
       });
-      res.json(newteamname);
+      res.redirect('http://localhost:3000/teams_table.html');
     } catch (err) {
       console.error(err);
       res.error('Server error');
