@@ -26,37 +26,31 @@
           <li><a href="favorites.html">Favorites</a></li>
           <li><a href="settings.html">Settings</a></li>
         </ul>
+
       </div>
 
-      <div style="background-image: url('image 4.png'); height: 500px; margin:10px auto">
+
+      <div style="background-image: url('image 6.png'); height: 1100px; margin:0px auto">
           <div>
-              <img src="Player Search.png" style="margin: 150px; height: 70px;">
+              <img src="Team Search.png" style="margin: 50px; height: 40px;">
+              <img src="Player Search.png" style="margin: 50px; height: 40px;">
+
           </div>
+
          <div>
-              <input  placeholder="Search" class = "input" style="margin: -150px; height: 69px; width: 369px; background-color: rgb(192, 212, 236); border-radius: 50px;">
+              <input  id="search" placeholder="Search" class = "input" style=" height: 69px; width: 369px; background-color: rgb(192, 212, 236); border-radius: 50px;">
          </div>
-         <div>
-              <a href = 'players_table.html' class="button" style="background-image: url('Group\ 3147.png'); border-radius: 50px; width: 246px; height: 72px; margin: -80px"></a>
-         </div>
+         <button onclick="search()" style="background-image: url('Group\ 3147.png'); border-radius: 50px; width: 246px; height: 72px; ">
+         </button>
+
+         <ul class="results">
+         </ul>
 
       </div>
-      <div style="background-image: url('image 6.png'); height: 500px; margin:0px auto">
-          <div>
-              <img src="Team Search.png" style="margin: 150px; height: 70px;">
-          </div>
-         <div>
-              <input  placeholder="Search" class = "input" style="margin: -150px; height: 69px; width: 369px; background-color: rgb(192, 212, 236); border-radius: 50px;">
-         </div>
-         <div>
-              <a href = "teams_table.html" class="button" style="background-image: url('Group\ 3147.png'); border-radius: 50px; width: 246px; height: 72px; margin: -80px"></a>
-         </div>
-
-      </div>
-
-
-
 
     </div>
+    <script src = "scripts.js">  </script>
+
 </body>
 
 </html>
