@@ -2,7 +2,7 @@ button {
     margin: 20px;
 }
 body {
-    text-align: center;
+   text-align: center;
 }
 
 .header-img {
@@ -22,8 +22,6 @@ body {
   }
 
   .body{
-    
-    
     background-size: auto;
   }
   .block {
@@ -35,6 +33,7 @@ body {
     font-size: 16px;
     cursor: pointer;
     text-align: center;
+    
   }
 
   #bg{
@@ -68,10 +67,39 @@ font-size: large;
   padding-bottom: 10px;
 }
 
-h1, h2, h3 {
+h1 {
   font-weight: bold;
   font-size: xx-large;
   line-height:100%;
   margin-top: 1.5em;
   margin-bottom: 0.5em;
+  text-align: center;
+}
+
+
+h2 {
+  font-weight: bold;
+  font-size: x-large;
+  line-height:100%;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+h3 {
+  font-weight: bold;
+  font-size: large;
+  line-height:100%;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+ul {
+  
+}
+
+p {
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
