@@ -51,11 +51,11 @@ async function search() {
     // Formats selected info
       `
           <li>
-            <span class ="name"><b>${team.name}</b></span><br>
-            <span class ="team_id">${team.team_id}</span><br>
-            <span class = "city">${team.city}</span><br>
-            <span class="state">${team.state}</span><br>
-            <span class ="arena">${team.arena}</span><br><br>
+            <span class ="name"><b>Team Name: ${team.name}</b></span><br>
+            
+            <span class = "city">Team City: ${team.city}</span><br>
+            
+            <span class ="arena">Team Arena: ${team.arena}</span><br><br>
           </li>
           `).join(html);
   }
@@ -65,11 +65,11 @@ async function search() {
     // Formats selected info
       `
           <li>
-            <span class ="restaurant"><b>${player.player_name}</b></span><br>
-            <span class ="restaurantType">${player.position_id}</span><br>
-            <span class = "address">${player.ppg}</span><br>
-            <span class="name">${player.team_id}</span><br>
-            <span class ="zipcode">${player.assists}</span><br><br>
+            <span class ="restaurant"><b>Player Name: ${player.player_name}</b></span><br>
+           
+            <span class = "address">Player Points Per Game: ${player.ppg}</span><br>
+            
+            <span class ="zipcode">Player assists: ${player.assists}</span><br><br>
           </li>
           `).join(html);
   }
