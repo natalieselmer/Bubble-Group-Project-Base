@@ -30,14 +30,129 @@
             
             <li class="is-active"><a href="settings.html">Settings</a></li>
         </ul>
-      </div>
-   
-      <div style="background-image: url('image 5.png'); height: 1000px; margin:0 auto">
+    </div>
+      
+    <div style="background-image: url('image 5.png'); height: 1300px; margin:0 auto">
        
+        <h1> Basketball Statistics and the NBA Bubble </h1>
+        
+        <h2> Description </h2>
+
+        <p> Since COVID-19 has hit, the sports industry has changed drastically. Many basketball fans weren't able to keep up 
+            with the basketball stats that they normally due because of the pandemic. To address this issue and give basketball 
+            fans a place to have all of this information already in one place, and have it be customizable, we have developed a 
+            web application that provides all relevant information from the Bubble as well as the ability to customize this space 
+            with other teams, players, and statistics.
+        </p>
+
+        <h2> Link to Website </h2>
+        
+        <a href="https://intense-bastion-27734.herokuapp.com/"> https://intense-bastion-27734.herokuapp.com/ </a>
+
+        <h2> Target Browsers </h2>
+
+        <ul>
+            <li> Macbook Pro 13/15 </li>
+            <li> iPhone 6/7/8 Plus </li>
+        </ul>
+
+        <hr>
+
+        <h1> Developer Manual </h1>
+
+        <h2> How to install application and all dependencies </h2>
+        
+        <ol>
+            <li> Clone this repository through Github Desktop or through Terminal. </li>
+            <li> Open repository in VSCode Terminal or Terminal application. </li>
+            <li> Type "npm install" into terminal window and run. </li>
+            <li> The application should now be set to use. </li>
+        </ol>
+
+        <h2> How to run application on a server </h2>
+        
+        <ol>
+            <li> Open repository in VSCode terminal or Terminal application. </li>
+            <li> Run npm start. There should be no errors. </li>
+            <li> In a web browser, go to url: <a href="http://localhost:3000/"> http://localhost:3000/ </a> </li>
+        </ol>
+
+        <h2> Server application API's </h2>
+
+        <h3> /api - API route that brings user to web application home page; can choose between players and teams </p>
+
+        <h3> /player </h3>
+
+        <ul>
+            <li> GET: returns the players from the database </li>
+            <li> POST: allows user to input a player entry if not already in the table </li>
+            <li> PUT: allows user to update any player attribute </li>
+            <li> DELETE: user can click "DELETE" button to delete player attributes </li>
+        </ul>
+
+        <h3> /player/:player_id </h3>
+
+        <ul>
+            <li> GET: returns the individual player that the user searches for </li>
+            <li> DELETE: ability to delete individual players by "player_id" without having to go back into mysql </li>
+        </ul>
+
+
+        <h3> /teams </h3>
+
+        <ul>
+            <li> GET: returns all the playoff teams </li>
+            <li> PUT: allows user to update a playoff team </li>
+            <li> POST: allows user to input a playoff team entry if not already in the table </li>
+        </ul>
+
+
+
+        <h3> /sponsors </h3>
+
+        <p> GET: returns all sponsors entries </p>
+
+        <h3> /endorsements </h3>
+
+        <p> GET: returns all endorsements entries </p>
+
+        <h3> /teamname </h3>
+
+        <ul>
+            <li> GET: returns all team entries </li>
+            <li> PUT: allows user to update a team </li>
+            <li> POST: allows user to input a team entry if not already in the table </li>
+        </ul>
+
+
+
+
+        <h3> /awards </h3>
+
+        <p> GET: returns all awards entries </p>
+        
+        <h2> Known Bugs </h2>
+
+        <p>
+            There is a known issue when adding players that the player_ids do not autoincrement when adding a new player so 
+            user needs to input player_id as well as other ids.
+        </p>
+
+        <h2> Future Development: </h2>
+
+        <ul>
+            <li> Implement "favorites" feature </li>
+            <li> Incorporate and display team statistics in addition to players </li>
+            <li> Incorporate and display team statistics in addition to players </li>
+            <li> Eliminate need to add in id (ex: player_id) when adding a player or team </li>
+        </ul>
+
         
 
     </div>
     
+    
+
 </body>
 
 </html>
